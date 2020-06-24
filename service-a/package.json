@@ -8,8 +8,9 @@
     "vscode": "node --inspect-brk=9229 app.js"
   },
   "dependencies": {
+    "bent": "^6.0.5",
     "express": "^4.17.1",
-    "bent": "^6.0.5"
+    "jaeger-client": "^3.18.0"
   },
   "devDependencies": {
     "standard": "^14.0.2"
