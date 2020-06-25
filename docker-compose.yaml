@@ -22,9 +22,22 @@ services:
     build: ./service-b
     links:
       - jaeger
+      - service-c
+    depends_on:
+      - jaeger
+      - service-c
+    ports:
+      - "8081:8081"
+    environment:
+      JAEGER_AGENT_HOST: jaeger
+      SERVICE_FORMATTER: service-c
+  service-c:
+    build: ./service-c
+    links:
+      - jaeger
     depends_on:
       - jaeger
     ports:
-      - "8081:8081"
+      - "8082:8082"
     environment:
       JAEGER_AGENT_HOST: jaeger
