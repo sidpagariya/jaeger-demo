@@ -7,6 +7,7 @@ const sayHello = async (req, res) => {
   const span = tracer.startSpan('say-hello', { childOf: req.span })
   const name = req.params.name
   span.log({ event: 'name', message: `this is a log message for name ${name}` })
+  span.setBaggageItem('my-baggage', name)
   // const response = await formatGreeting(name, span);
   const response = await formatGreetingRemote(name, span)
   span.setTag('response', response)
